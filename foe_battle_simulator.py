@@ -133,6 +133,20 @@ class EnergyCannon(Unit):
             return 350
         return 0
 
+class Legionnaire(Unit):
+    def __init__(self):
+        super().__init__(Unit.Class.HEAVY, 8, 13, 1, 11, {})
+
+    def bonus_attack(self, opponent):
+        if opponent.unit_class is Unit.Class.LIGHT:
+            return 4
+        return 0
+
+    def bonus_defense(self, opponent):
+        if opponent.unit_class is Unit.Class.LIGHT:
+            return 4
+        return 0
+
 class Rogue(Unit):
     def __init__(self):
         super().__init__(Unit.Class.LIGHT, 100, 1, 1, 14, {'secret_identity':True})
@@ -308,14 +322,15 @@ def fight(p, c, verbose=False, delay=False, movement_cost=3):
                         elif attacker.position > 7:
                             attacker.position = 7
 
-                        print(wave_to_str(p_wave, attacker, None))
-                        print(wave_to_str(c_wave, attacker, None))
-                        print(battle_layout(attacker, None))
-                        stdout.write(u"\u001b[1000D") # Move left
-                        stdout.write(u"\u001b[" + str(3) + "A") # Move up
-                        if delay:
-                            input()
-                            stdout.write(u"\u001b[" + str(1) + "A") # Move up
+                        if verbose:
+                            print(wave_to_str(p_wave, attacker, None))
+                            print(wave_to_str(c_wave, attacker, None))
+                            print(battle_layout(attacker, None))
+                            stdout.write(u"\u001b[1000D") # Move left
+                            stdout.write(u"\u001b[" + str(3) + "A") # Move up
+                            if delay:
+                                input()
+                                stdout.write(u"\u001b[" + str(1) + "A") # Move up
                         continue
 
                 defender = pop_defender(defenders)
