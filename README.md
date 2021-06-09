@@ -38,15 +38,15 @@ considered.
 
 ## Available Units
 
-[x] [Rogue](https://forgeofempires.fandom.com/wiki/Rogue)
-[x] [Legionnaire](https://forgeofempires.fandom.com/wiki/Legionnaire)
-[x] [Steel Warden](https://forgeofempires.fandom.com/wiki/Steel_Warden)
-[x] [Nail Storm](https://forgeofempires.fandom.com/wiki/Nail_Storm)
-[x] [Energy Cannon](https://forgeofempires.fandom.com/wiki/Energy_Cannon)
+- [x] [Rogue](https://forgeofempires.fandom.com/wiki/Rogue)
+- [x] [Legionnaire](https://forgeofempires.fandom.com/wiki/Legionnaire)
+- [x] [Steel Warden](https://forgeofempires.fandom.com/wiki/Steel_Warden)
+- [x] [Nail Storm](https://forgeofempires.fandom.com/wiki/Nail_Storm)
+- [x] [Energy Cannon](https://forgeofempires.fandom.com/wiki/Energy_Cannon)
 
 ## Available Unit Skills
 
-[x] [Secret Identity](https://forgeofempires.fandom.com/wiki/Secret_Identity)
-[x] [Keen Eye](https://forgeofempires.fandom.com/wiki/Keen_Eye)
-[x] [Force Field](https://forgeofempires.fandom.com/wiki/Force_Field)
-[x] [Rapid Deployment](https://forgeofempires.fandom.com/wiki/Rapid_Deployment)
+- [x] [Secret Identity](https://forgeofempires.fandom.com/wiki/Secret_Identity)
+- [x] [Keen Eye](https://forgeofempires.fandom.com/wiki/Keen_Eye)
+- [x] [Force Field](https://forgeofempires.fandom.com/wiki/Force_Field)
+- [x] [Rapid Deployment](https://forgeofempires.fandom.com/wiki/Rapid_Deployment)
