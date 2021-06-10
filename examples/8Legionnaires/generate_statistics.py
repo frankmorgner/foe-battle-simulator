@@ -26,9 +26,9 @@ import progress
 
 chance_ao_step = 10
 chance_ao_max = 10
-player_defense_step = 50
+player_defense_step = 10
 player_defense_max = 1600
-player_attack_step = 50
+player_attack_step = 10
 player_attack_max = 1600
 computer_attack = 827  # attrition 63
 computer_defense = 827 # attrition 63
