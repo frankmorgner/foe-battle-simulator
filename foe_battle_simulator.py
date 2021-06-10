@@ -250,7 +250,7 @@ def pop_defender(possible_defenders):
 
     return defender
 
-def fight(p, c, verbose=False, delay=False, movement_cost=3):
+def fight(p, c, verbose=False, delay=False, map_scaling=1.5):
     def distance(x, y):
         return abs(x-y)
     for p_wave in p.army:
@@ -285,13 +285,15 @@ def fight(p, c, verbose=False, delay=False, movement_cost=3):
                 if attacker.health == 0:
                     continue
 
-                move_max = floor(attacker.movement/movement_cost)
+                # assume plains as terrain with a moving cost of 2
+                scaled_move_max = floor(attacker.movement/(2 * map_scaling))
+                scaled_range = floor(attacker.range/map_scaling)
                 if attacker in p_wave:
                     chance_ao = p.chance_ao
                     boost_attack = p.boost_attack
 
                     defenders = [unit for unit in c_wave
-                            if unit.health > 0 and (move_max + attacker.range) >= distance(unit.position, attacker.position)]
+                            if unit.health > 0 and (scaled_move_max + scaled_range) >= distance(unit.position, attacker.position)]
                     boost_defense = c.boost_defense
                     # moves right (to positive values)
                     move_direction = 1
@@ -301,7 +303,7 @@ def fight(p, c, verbose=False, delay=False, movement_cost=3):
                     boost_attack = c.boost_attack
 
                     defenders = [unit for unit in p_wave
-                            if unit.health > 0 and (move_max + attacker.range) >= distance(unit.position, attacker.position)]
+                            if unit.health > 0 and (scaled_move_max + scaled_range) >= distance(unit.position, attacker.position)]
                     boost_defense = p.boost_defense
                     # moves left (to negative values)
                     move_direction = -1
@@ -311,12 +313,14 @@ def fight(p, c, verbose=False, delay=False, movement_cost=3):
 
                 if not defenders:
                     if attacker.position == move_direction*7:
+                        # attacker has reached the opposite side and there is
+                        # no opponent available, opponent player is defeated
                         if verbose:
                             print(wave_to_str(p_wave, None, None))
                             print(wave_to_str(c_wave, None, None))
                         break
                     else:
-                        attacker.position += move_direction * move_max
+                        attacker.position += move_direction * scaled_move_max
                         if attacker.position < -7:
                             attacker.position = -7
                         elif attacker.position > 7:
@@ -336,8 +340,8 @@ def fight(p, c, verbose=False, delay=False, movement_cost=3):
                 defender = pop_defender(defenders)
 
                 # move into range
-                if distance(attacker.position, defender.position) > attacker.range:
-                    attacker.position += move_direction * (distance(attacker.position, defender.position) - attacker.range)
+                if distance(attacker.position, defender.position) > scaled_range:
+                    attacker.position += move_direction * (distance(attacker.position, defender.position) - scaled_range)
 
                 # calculate damage based on https://youtu.be/ksX0w1h4-4U?t=25
                 attack  = (attacker.attack  + attacker.bonus_attack(defender))  * (100 + boost_attack)  / 100
