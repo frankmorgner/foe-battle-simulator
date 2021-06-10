@@ -25,7 +25,7 @@ from foe_battle_simulator import *
 import progress
 
 chance_ao_step = 10
-chance_ao_max = 10
+chance_ao_max = 40
 player_defense_step = 10
 player_defense_max = 1600
 player_attack_step = 10
