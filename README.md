@@ -77,4 +77,6 @@ attack/defense (attrition 63). Compared with the 8 Legionnaires, we see that
 attack and defense boost have a similar impact (the basic attack/defense Nail
 Storms is identical). But, even for a very high attack/defense boost, there's
 still some chance of loosing the fight. This is due to the skill keen eye,
-which may favor the presumably weaker opponent in some battles.
+which may favor the presumably weaker opponent in some battles. On the other
+hand, if the player's boosts are lower, then there is still a small chance of
+winning the fight.
