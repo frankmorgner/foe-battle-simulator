@@ -46,8 +46,7 @@ while 0 < chance_ao:
     f_wins.write( '# att   def     wins   units lost\n')
     with open(os.path.join(directory, filename+'_wins.gp'), 'w') as f:
         f.write(
-f"""set object rectangle from screen 0,0 to screen 1,1 behind fillcolor rgb 'white' fillstyle solid noborder
-set xlabel 'Player Attack'
+f"""set xlabel 'Player Attack'
 set ylabel 'Player Defense'
 set zlabel 'Total Wins'
 set title '8 Legionnaires vs 8 Legionnaires'
