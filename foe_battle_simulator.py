@@ -220,11 +220,11 @@ def battle_layout(attacker, defender):
 def sort_for_drawing(units):
     def weight_drawing(u):
         if u.has_secret_identity():
-            return 11
+            return 10 + u.movement
         elif 'rapid_deployment' in u.skills and u.skills['rapid_deployment']:
-            return -1
+            return -1 * u.movement
         else:
-            return u.health
+            return u.movement
     random.shuffle(units)
     units.sort(key=weight_drawing)
 
