@@ -344,8 +344,8 @@ def fight(p, c, verbose=False, delay=False, map_scaling=1.5):
                     attacker.position += move_direction * (distance(attacker.position, defender.position) - scaled_range)
 
                 # calculate damage based on https://youtu.be/ksX0w1h4-4U?t=25
-                attack  = (attacker.attack  + attacker.bonus_attack(defender))  * (100 + boost_attack)  / 100
-                defense = (defender.defense + defender.bonus_defense(attacker)) * (100 + boost_defense) / 100
+                attack  = (attacker.attack  * (100 + boost_attack)  / 100) + attacker.bonus_attack(defender)
+                defense = (defender.defense * (100 + boost_defense) / 100) + defender.bonus_defense(attacker)
                 if defense == 0:
                     q = 0
                 else:
