@@ -16,19 +16,23 @@
 # You should have received a copy of the GNU General Public License along with
 # FoE Battle Simulator.  If not, see <http://www.gnu.org/licenses/>.
 #
+import os, sys
+directory = os.path.dirname( __file__ )
+sys.path.append(os.path.abspath(os.path.join(directory, os.pardir)))
+sys.path.append(os.path.abspath(os.path.join(directory, os.pardir, os.pardir)))
 
-from foe_battle_simulator import Player, SteelWarden, Rogue, fight
-from progress import progress
+from foe_battle_simulator import *
+import progress
 
 chance_ao_step = 10
-chance_ao_max = 30
-player_defense_step = 50
+chance_ao_max = 10
+player_defense_step = 10
 player_defense_max = 1600
 player_attack_step = 50
 player_attack_max = 1600
 computer_attack = 827  # attrition 63
 computer_defense = 827 # attrition 63
-retries = 10
+retries = 100
 
 chance_ao = chance_ao_max
 
@@ -37,15 +41,17 @@ done = 0
 while 0 < chance_ao:
     chance_ao = chance_ao - chance_ao_step
     filename = 'a'+str(computer_attack)+'_d'+str(computer_defense)+'_ao'+str(chance_ao)
-    f_wins = open(filename+'.txt', 'w')
+    f_wins = open(os.path.join(directory, filename+'.txt'), 'w')
     f_wins.write(f'# AO chance {chance_ao}\n')
     f_wins.write( '# att   def     wins   units lost\n')
-    with open(filename+'_wins.gp', 'w') as f:
+    with open(os.path.join(directory, filename+'_wins.gp'), 'w') as f:
         f.write(
 f"""set xlabel 'Player Attack'
 set ylabel 'Player Defense'
 set zlabel 'Total Wins'
 set title '2 Nail Storms + 6 Rogues vs 8 Nail Storms, 4 Nail Storms'
+set terminal svg size 400,300
+set output '{filename}.svg'
 
 plot '{filename}.txt' u 1:2:3 with image""")
         f.close()
@@ -58,15 +64,15 @@ plot '{filename}.txt' u 1:2:3 with image""")
             n = retries
             while 0 < n:
                 done += 1
-                progress(done, total, status=f'{player_attack:>4}/{player_defense:<4} AO {chance_ao:<2}%')
+                progress.progress(done, total, status=f'{player_attack:>4}/{player_defense:<4} AO {chance_ao:<2}%')
                 player = Player('player',
-                        [{SteelWarden(), SteelWarden(), SteelWarden(), SteelWarden(), SteelWarden(), SteelWarden(), SteelWarden(), SteelWarden()}],
+                        [{NailStorm(), NailStorm(), Rogue(), Rogue(), Rogue(), Rogue(), Rogue(), Rogue()}],
                         boost_attack = player_attack,
                         boost_defense = player_defense,
                         chance_ao = chance_ao)
                 computer = Player('computer',
-                        [{SteelWarden(), SteelWarden(), SteelWarden(), SteelWarden(), SteelWarden(), SteelWarden(), SteelWarden(), SteelWarden()},
-                            {SteelWarden(), SteelWarden(), SteelWarden(), SteelWarden()}],
+                        [{NailStorm(), NailStorm(), NailStorm(), NailStorm(), NailStorm(), NailStorm(), NailStorm(), NailStorm()},
+                            {NailStorm(), NailStorm(), NailStorm(), NailStorm()}],
                         boost_attack = 827, # attrition 63
                         boost_defense = 827)
 
