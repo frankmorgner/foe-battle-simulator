@@ -53,9 +53,10 @@ considered.
 
 ## Examples
 
-In [examples]() you can find some match-ups, to show the impact of the player's
-attack/defense boost or the impact of some unit skills, such as the rogue's
-secret identity. The resulting data can be plotted with [Gnuplot](http://www.gnuplot.info/).
+In [examples](examples) you can find some match-ups, to show the impact of the
+player's attack/defense boost or the impact of some unit skills, such as the
+rogue's secret identity. The resulting data can be plotted with
+[Gnuplot](http://www.gnuplot.info/).
 
 ### 8 Legionnaires vs. 8 Legionnaires
 
@@ -63,4 +64,17 @@ secret identity. The resulting data can be plotted with [Gnuplot](http://www.gnu
 
 The plot shows the number of wins for an opponent with 827 attack/defense
 (attrition 63). The edges in the hot squares are marking the spots where the
-boost is big enough to deal more additional (minimum/maximum) damage.
+boost is big enough to deal more additional (minimum/maximum) damage. For
+Legionnaires, a defense boost is quite effective, because its basic defense is
+60% higher than its attack.
+
+### 8 Nail Storms vs. 8 Nail Storms
+
+![8 Nail Storms vs. 8 Nail Storms](examples/8NailStorms/a827_d827_ao0.svg)
+
+Again, the plot shows the number of wins for an opponent with 827
+attack/defense (attrition 63). Compared with the 8 Legionnaires, we see that
+attack and defense boost have a similar impact (the basic attack/defense Nail
+Storms is identical). But, even for a very high attack/defense boost, there's
+still some chance of loosing the fight. This is due to the skill keen eye,
+which may favor the presumably weaker opponent in some battles.
