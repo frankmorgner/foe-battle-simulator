@@ -50,3 +50,17 @@ considered.
 - [x] [Keen Eye](https://forgeofempires.fandom.com/wiki/Keen_Eye)
 - [x] [Force Field](https://forgeofempires.fandom.com/wiki/Force_Field)
 - [x] [Rapid Deployment](https://forgeofempires.fandom.com/wiki/Rapid_Deployment)
+
+## Examples
+
+In [examples]() you can find some match-ups, to show the impact of the player's
+attack/defense boost or the impact of some unit skills, such as the rogue's
+secret identity. The resulting data can be plotted with [Gnuplot](http://www.gnuplot.info/).
+
+### 8 Legionnaires vs. 8 Legionnaires
+
+![8 Legionnaires vs. 8 Legionnaires](examples/8Legionnaires/a827_d827_ao0.svg)
+
+The plot shows the number of wins for an opponent with 827 attack/defense
+(attrition 63). The edges in the hot squares are marking the spots where the
+boost is big enough to deal more additional (minimum/maximum) damage.
