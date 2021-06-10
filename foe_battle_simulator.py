@@ -81,7 +81,7 @@ class Unit:
 
 class SteelWarden(Unit):
     def __init__(self):
-        super().__init__(Unit.Class.HEAVY, 400, 600, 7, 18, {'keen_eye':20, 'force_field':2})
+        super().__init__(Unit.Class.HEAVY, 400, 600, 10, 18, {'keen_eye':20, 'force_field':2})
 
     def bonus_attack(self, opponent):
         if opponent.unit_class is Unit.Class.FAST:
