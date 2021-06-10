@@ -28,7 +28,7 @@ chance_ao_step = 10
 chance_ao_max = 10
 player_defense_step = 10
 player_defense_max = 1600
-player_attack_step = 50
+player_attack_step = 10
 player_attack_max = 1600
 computer_attack = 827  # attrition 63
 computer_defense = 827 # attrition 63
@@ -50,7 +50,7 @@ f"""set xlabel 'Player Attack'
 set ylabel 'Player Defense'
 set zlabel 'Total Wins'
 set title '2 Nail Storms + 6 Rogues vs 8 Nail Storms, 4 Nail Storms'
-set terminal svg size 400,300
+set terminal svg size 500,500
 set output '{filename}.svg'
 
 plot '{filename}.txt' u 1:2:3 with image""")
