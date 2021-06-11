@@ -49,7 +49,7 @@ while 0 < chance_ao:
 f"""set xlabel 'Player Attack'
 set ylabel 'Player Defense'
 set zlabel 'Total Wins'
-set title '2 Nail Storms + 6 Rogues vs 8 Nail Storms'
+set title '8 Nail Storms vs 8 Nail Storms'
 set terminal svg size 500,500
 set output '{filename}.svg'
 
@@ -66,7 +66,7 @@ plot '{filename}.txt' u 1:2:3 with image""")
                 done += 1
                 progress.progress(done, total, status=f'{player_attack:>4}/{player_defense:<4} AO {chance_ao:<2}%')
                 player = Player('player',
-                        [{NailStorm(), NailStorm(), Rogue(), Rogue(), Rogue(), Rogue(), Rogue(), Rogue()}],
+                        [{NailStorm(), NailStorm(), NailStorm(), NailStorm(), NailStorm(), NailStorm(), NailStorm(), NailStorm()}],
                         boost_attack = player_attack,
                         boost_defense = player_defense,
                         chance_ao = chance_ao)

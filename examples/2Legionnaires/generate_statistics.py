@@ -49,7 +49,7 @@ while 0 < chance_ao:
 f"""set xlabel 'Player Attack'
 set ylabel 'Player Defense'
 set zlabel 'Total Wins'
-set title '2 Nail Storms + 6 Rogues vs 8 Nail Storms'
+set title '2 Legionnaires + 6 Rogues vs 8 Legionnaires'
 set terminal svg size 500,500
 set output '{filename}.svg'
 
@@ -66,12 +66,12 @@ plot '{filename}.txt' u 1:2:3 with image""")
                 done += 1
                 progress.progress(done, total, status=f'{player_attack:>4}/{player_defense:<4} AO {chance_ao:<2}%')
                 player = Player('player',
-                        [{NailStorm(), NailStorm(), Rogue(), Rogue(), Rogue(), Rogue(), Rogue(), Rogue()}],
+                        [{Legionnaire(), Legionnaire(), Rogue(), Rogue(), Rogue(), Rogue(), Rogue(), Rogue()}],
                         boost_attack = player_attack,
                         boost_defense = player_defense,
                         chance_ao = chance_ao)
                 computer = Player('computer',
-                        [{NailStorm(), NailStorm(), NailStorm(), NailStorm(), NailStorm(), NailStorm(), NailStorm(), NailStorm()}],
+                        [{Legionnaire(), Legionnaire(), Legionnaire(), Legionnaire(), Legionnaire(), Legionnaire(), Legionnaire(), Legionnaire()}],
                         boost_attack = 827, # attrition 63
                         boost_defense = 827)
 
@@ -79,7 +79,7 @@ plot '{filename}.txt' u 1:2:3 with image""")
                 for wave in player.army:
                     p_units = p_units + len(wave)
 
-                fight(player, computer, map_scaling=1.5)
+                fight(player, computer, map_scaling=1.0)
 
                 p_units_left = 0
                 for wave in player.army:
