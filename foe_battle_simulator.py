@@ -343,7 +343,9 @@ def fight(p, c, verbose=False, delay=False, map_scaling=1.5):
                 if distance(attacker.position, defender.position) > scaled_range:
                     attacker.position += move_direction * (distance(attacker.position, defender.position) - scaled_range)
 
-                # calculate damage based on https://youtu.be/ksX0w1h4-4U?t=25
+                # calculate damage based on https://forum.en.forgeofempires.com/index.php?threads/the-damage-calculator.25048/
+                # i.e. https://docs.google.com/spreadsheet/ccc?key=0AsSZOUsLDUfddE1GRDd3cWQ0aDZNY1dLY3V5UnVoVEE&usp=sharing#gid=0
+                # which is somewhat confirmed by https://youtu.be/ksX0w1h4-4U?t=25
                 attack  = (attacker.attack  * (100 + boost_attack)  / 100) + attacker.bonus_attack(defender)
                 defense = (defender.defense * (100 + boost_defense) / 100) + defender.bonus_defense(attacker)
                 if defense == 0:
@@ -351,47 +353,49 @@ def fight(p, c, verbose=False, delay=False, map_scaling=1.5):
                 else:
                     q = attack/defense
 
-                if q >= 20:
+                if q >= 19:
                     min_damage = 10
-                elif q >= 10:
+                elif q >= 6:
                     min_damage = 9
-                elif q >= 3.5:
+                elif q >= 3.392857143:
                     min_damage = 8
-                elif q >= 2.3:
+                elif q >= 2.258064516:
                     min_damage = 7
-                elif q >= 1.8:
+                elif q >= 1.621621622:
                     min_damage = 6
-                elif q >= 1.3:
+                elif q >= 1.212121212:
                     min_damage = 5
-                elif q >= 1:
+                elif q >= 0.9223300971:
                     min_damage = 4
-                elif q >= 0.7:
+                elif q >= 0.6989247312:
                     min_damage = 3
-                elif q >= 0.4:
+                elif q >= 0.5102040816:
                     min_damage = 2
-                elif q >= 0.1:
+                elif q >= 0.3235294118:
                     min_damage = 1
                 else:
                     min_damage = 0
 
-                if q >= 10:
+                if q >= 9.111111111:
                     max_damage = 10
-                elif q >= 3.1:
+                elif q >= 2.962962963:
                     max_damage = 9
-                elif q >= 1.8:
+                elif q >= 1.666666667:
                     max_damage = 8
-                elif q >= 1.2:
+                elif q >= 1.111111111:
                     max_damage = 7
-                elif q >= 0.9:
+                elif q >= 0.8:
                     max_damage = 6
                 elif q >= 0.6:
                     max_damage = 5
-                elif q >= 0.3:
+                elif q >= 0.4558823529:
                     max_damage = 4
-                elif q >= 0.2:
+                elif q >= 0.345323741:
                     max_damage = 3
-                elif q >= 0.1:
+                elif q >= 0.2521008403:
                     max_damage = 2
+                elif q >= 0.1538461538:
+                    max_damage = 1
                 else:
                     max_damage = 0
 
